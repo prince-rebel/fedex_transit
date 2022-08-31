@@ -8,7 +8,6 @@ class fedex_transit(models.Model):
     _description = 'fedex_transit'
 
     name = fields.Char()
-    value = fields.Integer()
     description = fields.Text()
 #
 #     @api.depends('value')

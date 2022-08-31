@@ -27,7 +27,6 @@
            <group>
               <separator string="Informations" colspan="1"/>
               <field name="name" />
-              <field name="value" />
               <field name="description" />
               <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
            </group> 
