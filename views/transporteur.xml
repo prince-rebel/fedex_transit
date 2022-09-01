@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+   <record id="list_vue_transit" model="ir.ui.view">
+    <field name="name">tree.view.transporteur</field>
+    <field name="model">fedex.transporteur</field>
+    <field name="arch" type="xml">
+      <tree> 
+          <field name="name" />
+      </tree>
+    </field>
+  </record>
+  <!-- Vue formulaire -->
+  <record id="transit_form_view" model="ir.ui.view">
+    <field name="name">transporteur.form.view</field>
+    <field name="model">fedex.transporteur</field>
+    <field name="arch" type="xml">
+      <form> 
+      <!-- <header>
+        <button name="next_level" type="object" string="Etape suivante" class="oe_highlight" />
+        <field name="status" widget="statusbar" nolabel="1"></field>
+      </header> -->
+      <sheet>
+        <group >
+           <group>
+              <separator string="Informations" colspan="1"/>
+              <field name="name" />
+              <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
+           </group> 
+        </group>
+        <!-- <notebook colspan="4">
+            <page string="test">
+                <field name="test" nolabel="1"/>
+            </page>
+        </notebook> -->
+      </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_transporteur" model="ir.actions.act_window">
+    <field name="name">Gestion des Transporteurs</field>
+    <field name="res_model">fedex.transporteur</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+
+ 
+  <!-- ajout des sous menus pour chaque categorie -->
+ 
+  <menuitem id="ajout_transporteur_menu" action="action_transporteur"  parent="fedex_parametre" name="Transporteurs"/>
+
+    <!-- explicit list view definition -->
+
+
+
+
+  </data>
+</odoo>
