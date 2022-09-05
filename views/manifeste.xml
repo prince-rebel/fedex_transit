@@ -1,0 +1,87 @@
+<odoo>
+  <data>
+
+   <record id="list_manifeste" model="ir.ui.view">
+    <field name="name">tree.manifeste</field>
+    <field name="model">fedex.manifeste</field>
+    <field name="arch" type="xml">
+      <tree> 
+          <field name="add_date" />
+          <field name="name" />
+          <field name="Poids" />
+          <field name="Transporteur" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="form_manifeste" model="ir.ui.view">
+    <field name="name">form.manifeste</field>
+    <field name="model">fedex.manifeste</field>
+    <field name="arch" type="xml">
+      <form> 
+      <!-- <header>
+        <button name="next_level" type="object" string="Etape suivante" class="oe_highlight" />
+        <field name="status" widget="statusbar" nolabel="1"></field>
+      </header> -->
+      <sheet>
+        <group >
+           <group>
+              <!-- <separator string="Informations" colspan="1"/> -->
+              <field name="add_date" />
+              <field name="name" />
+              <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
+           </group> 
+           <group >
+                <field name="Poids" />
+                <field name="Transporteur" />
+           </group>
+        
+        </group>
+           <notebook>
+            <page name="Colis" string="Colis">
+            <field name="Colis_ids">
+            <tree>
+                <field name="NumColis"/>
+                <field name="Poids"/>
+                <field name="Destinateur"/>
+                <field name="NbrColis"/>
+                <field name="Description"/>
+                <field name="ValeurColis"/>
+                <field name="StatusColis"/>
+                <field name="ModeSortie_id"/>
+                <field name="Ref"/>
+                <field name="Date_de_sortie"/>
+            </tree>
+            </field>
+                
+            </page>
+           </notebook>
+        
+      </sheet>
+      <div class="oe_chatter">
+        <field name="message_follower_ids"/>
+        <field name="activity_ids"/>
+        <field name="message_ids"/>
+      </div>
+      </form>
+    </field>
+  </record>
+    
+
+  <record id="action_manifeste" model="ir.actions.act_window">
+    <field name="name">manifeste</field>
+    <field name="res_model">fedex.manifeste</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+
+ 
+ 
+  <menuitem id="ajout_manifeste" action="action_manifeste"  parent="transit_sous_menu" name="manifeste"/>
+
+
+
+
+
+  </data>
+</odoo>

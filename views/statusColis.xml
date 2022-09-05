@@ -1,9 +1,9 @@
 <odoo>
   <data>
 
-   <record id="list_vue_transporteur" model="ir.ui.view">
-    <field name="name">tree.view.transporteur</field>
-    <field name="model">fedex.transporteur</field>
+   <record id="list_status_colis" model="ir.ui.view">
+    <field name="name">tree.status_colis</field>
+    <field name="model">fedex.statut_colis</field>
     <field name="arch" type="xml">
       <tree> 
           <field name="name" />
@@ -11,9 +11,9 @@
     </field>
   </record>
 
-  <record id="transporteur_form_view" model="ir.ui.view">
-    <field name="name">transporteur.form.view</field>
-    <field name="model">fedex.transporteur</field>
+  <record id="form_status_colis" model="ir.ui.view">
+    <field name="name">form.statut_colis</field>
+    <field name="model">fedex.statut_colis</field>
     <field name="arch" type="xml">
       <form> 
       <!-- <header>
@@ -39,19 +39,17 @@
   </record>
     
 
-  <record id="action_transporteur" model="ir.actions.act_window">
-    <field name="name">Gestion des Transporteurs</field>
-    <field name="res_model">fedex.transporteur</field>
+  <record id="action_Statut_colis" model="ir.actions.act_window">
+    <field name="name">Liste des status</field>
+    <field name="res_model">fedex.statut_colis</field>
     <field name="view_mode">tree,form</field>
   </record>
 
 
  
-  <!-- ajout des sous menus pour chaque categorie -->
  
-  <menuitem id="ajout_transporteur_menu" action="action_transporteur"  parent="fedex_parametre" name="Transporteurs"/>
+  <menuitem id="ajout_status_colis" action="action_Statut_colis"  parent="fedex_parametre" name="Status Colis"/>
 
-    <!-- explicit list view definition -->
 
 
 

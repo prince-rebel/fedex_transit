@@ -1,3 +1,4 @@
+from email.mime import image
 from odoo import models, fields, api
 from datetime import datetime
 from odoo.exceptions import ValidationError
@@ -6,15 +7,26 @@ from odoo.exceptions import ValidationError
 
 class fedex_transit_colis(models.Model):
     _name = 'fedex.colis'
+    _inherit =['mail.thread','mail.activity.mixin']
+
     _description = 'fedex_colis'
 
-    add_date  = fields.Date(string="Date d'arrivée ", default=datetime.today())
-    NumLta  = fields.Char(string ='Numéra LTA ')
-    Poids  = fields.Integer(string='Poids ')
-    Transporteur = fields.Many2one(string='Transporteur', comodel_name='fedex.transporteur')
-    coli_ids = fields.Many2many(
-    comodel_name='fedex.colis'
-    )
+
+    # add_date  = fields.Date(string="Date d'arrivée ", default=datetime.today())
+    Lta_id  = fields.Many2one(string="Numero LTA",comodel_name='fedex.manifeste')
+    NumColis = fields.Integer(string='Numbero Colis ')
+    Poids  = fields.Integer(string='Poids du manifeste ')
+    # Transporteur = fields.Many2one(string='Transporteur', comodel_name='fedex.transporteur')
+    Destinateur  = fields.Many2one(string='Destinateur', comodel_name='res.partner')
+    NbrColis  = fields.Float(string="Nombre de colis",  default='1')
+    Description = fields.Text(string='Description')
+    ValeurColis  = fields.Float(string='Valeur du colis')
+    StatusColis= fields.Many2one(string=' Status', comodel_name='fedex.statut_colis')
+    ModeSortie_id= fields.Many2one(string=' Mode de Sortie', comodel_name='fedex.modesortie')
+    Ref = fields.Char(string='Reférence')
+    Date_de_sortie = fields.Date(string="Date d'arrivée ", default=datetime.today())
+
+    ImageColis  = fields.Binary("image du colis")
 
     # @api.constrains('NumLta')
     # def _check_lta(self):

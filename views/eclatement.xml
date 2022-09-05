@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+
+   <record id="list_eclatement" model="ir.ui.view">
+    <field name="name">tree.eclatement</field>
+    <field name="model">fedex.eclatement</field>
+    <field name="arch" type="xml">
+      <tree> 
+          <field name="Lta_id" />
+          <field name="Date_Eclatement" />
+          <field name="nbrTotal" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="form_eclatement" model="ir.ui.view">
+    <field name="name">form.eclatement</field>
+    <field name="model">fedex.eclatement</field>
+    <field name="arch" type="xml">
+      <form> 
+      <!-- <header>
+        <button name="next_level" type="object" string="Etape suivante" class="oe_highlight" />
+        <field name="status" widget="statusbar" nolabel="1"></field>
+      </header> -->
+      <sheet>
+        <group >
+           <group>
+              <!-- <separator string="Informations" colspan="1"/> -->
+          
+          <field name="Lta_id" />
+          <field name="Date_Eclatement" />
+              <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
+           </group> 
+        </group>
+              <notebook>
+        <page name="Eclatement" string="Eclatement">
+        <field name="articles_ids">
+            <tree  editable="bottom">
+              <field name="NumLignle"/>
+              <field name="Awb"/>
+              <field name="Destinateur"/>
+              <field name="name"/>
+              <field name="Nbr"/>
+              <field name="Poids"/>
+            </tree>
+        </field>
+         
+        </page>
+      </notebook>
+      </sheet>
+      <div class="oe_chatter">
+        <field name="message_follower_ids"/>
+        <field name="activity_ids"/>
+        <field name="message_ids"/>
+      </div>
+      </form>
+    </field>
+  </record>
+    
+
+  <record id="action_eclatement" model="ir.actions.act_window">
+    <field name="name">Eclatement</field>
+    <field name="res_model">fedex.eclatement</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+
+ 
+ 
+  <menuitem id="ajout_eclatement" action="action_eclatement"  parent="operations" name="Eclatement"/>
+
+
+
+
+
+  </data>
+</odoo>

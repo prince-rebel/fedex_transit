@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+
+   <record id="list_vue_articles" model="ir.ui.view">
+    <field name="name">tree.view.articles</field>
+    <field name="model">fedex.articles</field>
+    <field name="arch" type="xml">
+      <tree> 
+          <field name="Lta_id" 
+           />
+           <field name="name"/>
+           <field name="Awb"/>
+           <field name="Destinateur"/>
+           <field name="Poids"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="articles_form_view" model="ir.ui.view">
+    <field name="name">articles.form.view</field>
+    <field name="model">fedex.articles</field>
+    <field name="arch" type="xml">
+      <form> 
+      <!-- <header>
+        <button name="next_level" type="object" string="Etape suivante" class="oe_highlight" />
+        <field name="status" widget="statusbar" nolabel="1"></field>
+      </header> -->
+      <sheet>
+        <field name="ImageArticles" widget="image" class="oe_avatar" />
+
+        <group >
+           <group>
+              <!-- <separator string="Informations" colspan="1"/> -->
+               <field name="Lta_id" 
+          invisible="1"
+           />
+          <!-- <field name="eclatement_ids"/> -->
+           <field name="NumLignle"/>
+           <field name="Awb"/>
+           <field name="Destinateur"/>
+        
+              <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
+           </group> 
+           <group >
+              <field name="name"/>
+              <field name="Nbr"/>
+              <field name="Poids"/>
+           </group>
+        </group>
+      </sheet>
+      <div class="oe_chatter">
+        <field name="message_follower_ids"/>
+        <field name="activity_ids"/>
+        <field name="message_ids"/>
+      </div>
+      </form>
+    </field>
+  </record>
+    
+
+  <record id="action_articles" model="ir.actions.act_window">
+    <field name="name">Gestion des articles</field>
+    <field name="res_model">fedex.articles</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+
+ 
+  <!-- ajout des sous menus pour chaque categorie -->
+ 
+  <menuitem id="ajout_articles" action="action_articles"  parent="transit_sous_menu" name="Articles"/>
+
+    <!-- explicit list view definition -->
+
+
+
+
+  </data>
+</odoo>

@@ -6,10 +6,10 @@
     <field name="model">fedex.colis</field>
     <field name="arch" type="xml">
       <tree> 
-          <field name="add_date"/>
-          <field name="NumLta"/>
+          <!-- <field name="add_date"/> -->
+          <field name="Lta_id"/>
           <field name="Poids"/>
-          <field name="Transporteur"/>
+          <!-- <field name="Transporteur"/> -->
       </tree>
     </field>
   </record>
@@ -24,29 +24,35 @@
         <field name="status" widget="statusbar" nolabel="1"></field>
       </header> -->
       <sheet>
+        <field name="ImageColis" widget="image" class="oe_avatar" />
+
         <group >
            <group>
-              <separator string="Informations" colspan="1"/>
-              <field name="add_date" />
-              <field name="NumLta" />
+              <!-- <separator string="Informations d'Identification" colspan="1"/> -->
+              <field name="Lta_id" />
+              <field name="NumColis" />
               <field name="Poids" />
-              <field name="Transporteur" />
+              <field name="Destinateur" />
+              <field name="NbrColis" />
               <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
            </group> 
+           <group >
+              <field name="ValeurColis" />
+              <field name="StatusColis" />
+              <field name="ModeSortie_id" />
+              <field name="Ref" />
+              <field name="Date_de_sortie" />
+           </group>
+            <separator string="Description" colspan="1"/>
+           <field name="Description" />
+
         </group>
-        <notebook colspan="4">
-            <page string="Liste des LTA">
-             <tree string="">
-
-              <field name="add_date" />
-              <field name="NumLta" />
-              <field name="Poids" />
-              <field name="Transporteur" />
-             </tree>
-
-            </page>
-        </notebook>
       </sheet>
+       <div class="oe_chatter">
+          <field name="message_follower_ids"/>
+          <field name="activity_ids"/>
+          <field name="message_ids"/>
+        </div>
       </form>
     </field>
   </record>
@@ -57,11 +63,11 @@
     <field name="view_mode">tree,form</field>
   </record>
 
-  <record id="action_validation" model="ir.actions.act_window">
+  <!-- <record id="action_validation" model="ir.actions.act_window">
     <field name="name">Gestion des validations</field>
     <field name="res_model">fedex.transit</field>
     <field name="view_mode">tree,form</field>
-  </record>
+  </record> -->
 
   <record id="action_parametre" model="ir.actions.act_window">
     <field name="name">Configuration</field>
@@ -83,8 +89,8 @@
   <!-- ajout des sous menus pour chaque categorie -->
   <menuitem id="ajout_colis_menu" action="action_transit_colis" parent="transit_sous_menu" name="Ajouter un colis"/>
   <menuitem id="sortie_colis_menu" action="action_sortie"  parent="operations" name="Sortie colis "/>
-  <menuitem id="mes_validations_menu" action="action_validation"  parent="validation" name="Mes demandes"/>
-  <menuitem id="ajout_transitaires_menu" action="action_parametre"  parent="fedex_parametre" name="Transitaires"/>
+  <!-- <menuitem id="mes_validations_menu" action="action_validation"  parent="validation" name="Mes demandes"/> -->
+  <!-- <menuitem id="ajout_transitaires_menu" action="action_parametre"  parent="fedex_parametre" name="Transitaires"/> -->
 
     <!-- explicit list view definition -->
 
