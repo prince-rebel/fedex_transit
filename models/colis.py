@@ -1,3 +1,4 @@
+import email
 from email.mime import image
 from odoo import models, fields, api
 from datetime import datetime
@@ -25,7 +26,7 @@ class fedex_transit_colis(models.Model):
     ModeSortie_id= fields.Many2one(string=' Mode de Sortie', comodel_name='fedex.modesortie')
     Ref = fields.Char(string='Reférence')
     Date_de_sortie = fields.Date(string="Date d'arrivée ", default=datetime.today())
-
+    courrier = fields.Char(string="client Email",compute='_mail_user')
     ImageColis  = fields.Binary("image du colis")
 
     # @api.constrains('NumLta')
@@ -33,4 +34,7 @@ class fedex_transit_colis(models.Model):
     #     for record in self:
     #         if record.NumLta.values:
     #             raise ValidationError("Ce Numero LTA existe déja")
-
+    @api.onchange('Destinateur')
+    def _mail_user(self):
+        for record in self:
+            record.courrier= record.Destinateur.email

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from pprint import pprint
+from re import template
 from odoo import models, fields, api
 from datetime import datetime
 
@@ -14,6 +16,46 @@ class fedex_manifeste(models.Model):
     Poids  = fields.Integer(string='Poids du manifeste ',required=True)
     Transporteur = fields.Many2one(string='Transporteur', comodel_name='fedex.transporteur',required=True)
     Colis_ids = fields.One2many('fedex.colis', 'Lta_id',string="colis")
+    createur  = fields.Many2one('res.users','Utilisateur ', default=lambda self: self.env.user)
+    state = fields.Selection(selection=[
+           ('draft', 'Draft'),
+           ('in_progress', 'In Progress'),
+           ('cancel', 'Cancelled'),
+           ('done', 'Done'),
+       ], string='Status', required=True, readonly=True, copy=False,
+       tracking=True, default='draft')
+
+    def button_get_in_eclatement(self):
+       self.write({
+           'state': "in_progress"
+       })
+
+    def send_mail(self):
+        self.ensure_one()
+        # ir_model_data = self.env['ir.model.data']
+        # try:
+        #     template_id = ir_model_data.get_object_reference('fedex__transit',   'email_template')[1]
+        # except ValueError:
+        #     template_id = False
+        pprint(self.Colis_ids)
+
+        template_id=self.env.ref('fedex__transit.email_template_relance').id
+        ctx={
+            'default_model':'fedex.manifeste',
+            'default_res_id':self.id,
+            'default_use_template':bool(template_id),
+            'default_template_id':template_id,
+            'default_composition_mode':'comment',
+            'email_to':self.Colis_ids.courrier,
+        }
+        return{
+            'type': 'ir.actions.act_window',
+            'view_type':'form',
+            'view_mode':'form',
+            'res_model':'mail.compose.message',
+            'target':'new',
+            'context':ctx,
+        }
 
 
 

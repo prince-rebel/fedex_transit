@@ -38,6 +38,7 @@
         'views/eclatement.xml',
         'views/articles.xml',
         'views/retourClient.xml',
+        'data/mail_template.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

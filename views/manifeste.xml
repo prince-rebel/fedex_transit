@@ -10,6 +10,9 @@
           <field name="name" />
           <field name="Poids" />
           <field name="Transporteur" />
+          <field name="createur"  
+          readonly="1"
+          />
       </tree>
     </field>
   </record>
@@ -19,11 +22,19 @@
     <field name="model">fedex.manifeste</field>
     <field name="arch" type="xml">
       <form> 
-      <!-- <header>
-        <button name="next_level" type="object" string="Etape suivante" class="oe_highlight" />
-        <field name="status" widget="statusbar" nolabel="1"></field>
-      </header> -->
+      <header>
+        <button name="button_get_in_eclatement" type="object" string="Envoyer à Eclatement" class="oe_highlight" 
+        attrs="{'invisible':[('state','==','in_progress')]}"/>
+        <!-- <button name="send_mail" type="object" string="Envoyer un mail" class="oe_highlight" /> -->
+        <field name="state" widget="statusbar" nolabel="1"></field>
+      </header>
       <sheet>
+        <div class="oe_button_box" name="button_box">
+            <button string="send_email" icon="fa-envelope" class="oe_stat_button" name="send_mail" type="object"/>
+
+
+        </div>
+
         <group >
            <group>
               <!-- <separator string="Informations" colspan="1"/> -->

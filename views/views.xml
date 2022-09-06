@@ -34,6 +34,9 @@
               <field name="Poids" />
               <field name="Destinateur" />
               <field name="NbrColis" />
+              <field name="courrier"  
+              readonly="1"
+              />
               <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
            </group> 
            <group >

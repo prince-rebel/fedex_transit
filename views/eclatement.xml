@@ -18,10 +18,11 @@
     <field name="model">fedex.eclatement</field>
     <field name="arch" type="xml">
       <form> 
-      <!-- <header>
-        <button name="next_level" type="object" string="Etape suivante" class="oe_highlight" />
-        <field name="status" widget="statusbar" nolabel="1"></field>
-      </header> -->
+      <!-- <header> -->
+        <!-- <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/> -->
+        <!-- <button name="send_mail" type="object" string="Envoyer un mail" class="oe_highlight" /> -->
+        <!-- <field name="status" widget="statusbar" nolabel="1"></field> -->
+      <!-- </header> -->
       <sheet>
         <group >
            <group>
@@ -37,7 +38,7 @@
         <field name="articles_ids" context="{'Lta_id':15}">
             <tree  editable="bottom">
               <field name="Lta_id"               
-              readonly="1"
+              invisible="1"
               />
               <field name="NumLignle"/>
               <field name="Awb"/>
