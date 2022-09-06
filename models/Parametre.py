@@ -11,7 +11,7 @@ class fedex_statut_colis(models.Model):
 
     _description = 'statut des colis'
 
-    name  = fields.Char(string ='Status Colis ')
+    name  = fields.Char(string ='Status Colis ',required=True)
 
 class fedex_mode_sortie(models.Model):
     _name = 'fedex.modesortie'
@@ -19,7 +19,7 @@ class fedex_mode_sortie(models.Model):
 
     _description = 'Les modes de sorties'
 
-    name = fields.Char(string="Mode de Sortie")
+    name = fields.Char(string="Mode de Sortie",required=True)
 
 
 class fedex_statut_transit(models.Model):
@@ -28,7 +28,7 @@ class fedex_statut_transit(models.Model):
 
     _description = 'statut des transit'
 
-    name  = fields.Char(string ='libellé ')
+    name  = fields.Char(string ='libellé ',required=True)
      
 
 class fedex_transit_transporteur(models.Model):
@@ -37,7 +37,7 @@ class fedex_transit_transporteur(models.Model):
 
     _description = 'fedex_transporteur'
 
-    name = fields.Char(string='Transporteur')
+    name = fields.Char(string='Transporteur',required=True)
 
 
 
@@ -47,7 +47,7 @@ class fedex_regime(models.Model):
 
     _description = 'Liste des regimes'
 
-    name  = fields.Char(string ='Libellé')
+    name  = fields.Char(string ='Libellé',required=True)
 
 class fedex_etatSoumission(models.Model):
     _name = 'fedex.etat_soumission'
@@ -55,7 +55,7 @@ class fedex_etatSoumission(models.Model):
 
     _description = 'Liste des Etats de soumission'
 
-    name  = fields.Char(string ='Libellé')
+    name  = fields.Char(string ='Libellé',required=True)
 
 class fedex_typeSoumission(models.Model):
     _name = 'fedex.type_soumission'
@@ -71,7 +71,7 @@ class fedex_retourClient(models.Model):
 
     _description = 'Liste des Types de retour Client'
 
-    name  = fields.Char(string ='Libellé')
+    name  = fields.Char(string ='Libellé',required=True)
 
 
   

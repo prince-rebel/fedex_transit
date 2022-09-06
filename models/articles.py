@@ -15,6 +15,7 @@ class fedex_articles(models.Model):
     Destinateur  = fields.Many2one(string='Destinateur', comodel_name='res.partner')
     Poids  = fields.Integer(string='Poids (Kg)')
     eclatement_ids = fields.Many2one( comodel_name='fedex.eclatement')
+    # Lta_id  = fields.Char(string="Numero LTA" ,related='eclatement_ids.Lta_id')
     Nbr  = fields.Integer(string="Nombre",  default='1')
     ImageArticles  = fields.Binary("image Article")
 

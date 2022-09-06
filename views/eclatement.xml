@@ -34,8 +34,11 @@
         </group>
               <notebook>
         <page name="Eclatement" string="Eclatement">
-        <field name="articles_ids">
+        <field name="articles_ids" context="{'Lta_id':15}">
             <tree  editable="bottom">
+              <field name="Lta_id"               
+              readonly="1"
+              />
               <field name="NumLignle"/>
               <field name="Awb"/>
               <field name="Destinateur"/>

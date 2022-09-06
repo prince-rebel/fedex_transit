@@ -10,9 +10,9 @@ class fedex_manifeste(models.Model):
     _description = 'Enregistrement des manifestes'
 
     add_date  = fields.Date(string="Date d'arrivée ", default=datetime.today())
-    name  = fields.Char(string ='LTA ' ,help='057-001-004')
-    Poids  = fields.Integer(string='Poids du manifeste ')
-    Transporteur = fields.Many2one(string='Transporteur', comodel_name='fedex.transporteur')
+    name  = fields.Char(string ='LTA ' ,help='057-001-004',required=True)
+    Poids  = fields.Integer(string='Poids du manifeste ',required=True)
+    Transporteur = fields.Many2one(string='Transporteur', comodel_name='fedex.transporteur',required=True)
     Colis_ids = fields.One2many('fedex.colis', 'Lta_id',string="colis")
 
 
