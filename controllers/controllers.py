@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# from pprint import pprint
+# from unicodedata import name
+# from urllib import request
 # from odoo import http
 
 
@@ -7,15 +10,18 @@
 #     def index(self, **kw):
 #         return "Hello, world"
 
-#     @http.route('/fedex__transit/fedex__transit/objects', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('fedex__transit.listing', {
-#             'root': '/fedex__transit/fedex__transit',
-#             'objects': http.request.env['fedex__transit.fedex__transit'].search([]),
-#         })
+    # @http.route('/fedex__transit/fedex__transit/objects', auth='public')
+    # def list(self, **kw):
+    #     return http.request.render('fedex__transit.listing', {
+    #         'root': '/fedex__transit/fedex__transit',
+    #         'objects': http.request.env['fedex__transit.fedex__transit'].search([]),
+    #     })
 
-#     @http.route('/fedex__transit/fedex__transit/objects/<model("fedex__transit.fedex__transit"):obj>', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('fedex__transit.object', {
-#             'object': obj
-#         })
+    # @http.route('/fedex__transit/mani', auth='public' ,type='http')
+    # def object(self, **kw):
+
+    #     x=http.request.env['fedex.manifeste']
+    #     y=x.search([])
+    #     pprint(y)
+    #     for r in y:
+    #         print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$',r[name])

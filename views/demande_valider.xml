@@ -1,0 +1,93 @@
+<odoo>
+  <data>
+
+ <record id="list_vue_sortie_valide" model="ir.ui.view">
+    <field name="name">tree.view.demandesvalider</field>
+    <field name="model">fedex.colis</field>
+
+    <field name="arch" type="xml">
+      <tree> 
+          <!-- <field name="add_date"/> -->
+          <field name="NumColis"/>
+          <field name="Poids"/>
+          <field name="Destinateur" />
+          <!-- <field name="NbrColis" /> -->
+          <!-- <field name="Transporteur"/> -->
+      </tree>
+    </field>
+  </record>
+  <!-- Vue formulaire -->
+  <record id="list_vue_sortie_valide_form_view" model="ir.ui.view">
+    <field name="name">demandesvalider.form.view</field>
+    <field name="model">fedex.colis</field>
+    <field name="arch" type="xml">
+      <form> 
+      <header>
+      <button name="Marquer_livre" type="object" string="Livrer" class="oe_highlight" attrs="{'invisible':[('state_colis','=','livre')]}"/>
+      <field name="state_colis" widget="statusbar" nolabel="1"/>
+      </header>
+      <sheet>
+        <!-- <field name="doc" widget="pdf_viewer" class="w-25 p-1" /> -->
+
+        <group >
+           <group>
+              <!-- <separator string="Informations d'Identification" colspan="1"/> -->
+              <field name="NumColis" />
+              <field name="Poids" />
+              <field name="Destinateur" />
+              <field name="NbrColis" />
+              
+              <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
+           </group> 
+           <group >
+              <field name="ValeurColis" />
+              <!-- <field name="StatusColis" /> -->
+              <field name="state_colis" />
+              <field name="ModeSortie_id" />
+              <field name="Ref" />
+              <field name="Date_de_sortie" />
+           </group>
+            <separator string="Description" colspan="1"/>
+           <field name="Description" />
+
+        </group>
+      </sheet>
+       <div class="oe_chatter">
+          <field name="message_follower_ids"/>
+          <field name="activity_ids"/>
+          <field name="message_ids"/>
+        </div>
+      </form>
+    </field>
+  </record>
+    
+
+  <record id="action_sortie_valider" model="ir.actions.act_window">
+   <field name="name"> Sorties accepter</field>
+    <field name="res_model">fedex.colis</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_ids" eval="[ (5, 0, 0), (0, 0, {
+                    'view_mode': 'tree',
+                    'view_id': ref('fedex__transit.list_vue_sortie_valide'),
+                    }),
+                    (0, 0, {
+                    'view_mode': 'form',
+                    'view_id': ref('fedex__transit.list_vue_sortie_valide_form_view'),
+                    }),]"/>
+    
+    <field name="domain">[('state_colis','=','sortie_confirme')]</field>
+  </record>
+
+
+ 
+  <!-- ajout des sous menus pour chaque categorie -->
+ 
+  <menuitem id="sortieaccepte" action="action_sortie_valider"  parent="Magasin" name="Sortie accepte"/>
+
+    <!-- explicit list view definition -->
+
+
+
+
+  </data>
+</odoo>

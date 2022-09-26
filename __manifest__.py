@@ -20,13 +20,29 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','mail'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/etatSoumission.xml',
+        'views/modeSortie.xml',
+        'views/regime.xml',
+        'views/statusColis.xml',
+        'views/statusTransit.xml',
+        'views/transporteur.xml',
+        'views/typeSoumission.xml',
+        'views/manifeste.xml',
+        'views/eclatement.xml',
+        'views/articles.xml',
+        'views/retourClient.xml',
+        'views/demande_sortie.xml',
+        'views/Demande_en_attente.xml',
+        'views/demande_valider.xml',
+        'views/envoieAvis.xml',
+        'data/mail_template.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

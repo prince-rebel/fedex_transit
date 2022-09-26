@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+
+   <record id="list_etat_soumission" model="ir.ui.view">
+    <field name="name">tree.etat_soumission</field>
+    <field name="model">fedex.etat_soumission</field>
+    <field name="arch" type="xml">
+      <tree> 
+          <field name="name" />
+      </tree>
+    </field>
+  </record>
+
+  <record id="form_etat_soumission" model="ir.ui.view">
+    <field name="name">form.etat_soumission</field>
+    <field name="model">fedex.etat_soumission</field>
+    <field name="arch" type="xml">
+      <form> 
+      <!-- <header>
+        <button name="next_level" type="object" string="Etape suivante" class="oe_highlight" />
+        <field name="status" widget="statusbar" nolabel="1"></field>
+      </header> -->
+      <sheet>
+        <group >
+           <group>
+              <separator string="Informations" colspan="1"/>
+              <field name="name" />
+              <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
+           </group> 
+        </group>
+      </sheet>
+        <div class="oe_chatter">
+          <field name="message_follower_ids"/>
+          <field name="activity_ids"/>
+          <field name="message_ids"/>
+        </div>
+      </form>
+ 
+    </field>
+  </record>
+    
+
+  <record id="action_etat_soumission" model="ir.actions.act_window">
+    <field name="name">Etat Soumission</field>
+    <field name="res_model">fedex.etat_soumission</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+
+ 
+ 
+  <menuitem id="ajout_etat_soumission" action="action_etat_soumission"  parent="fedex_parametre" name="Etat des soumission"/>
+
+
+
+
+
+  </data>
+</odoo>

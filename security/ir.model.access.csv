@@ -1,2 +1,14 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-fedex__transit_user,Base User,model_fedex_transit,base.group_user,1,1,1,1
+fedex_statut_colis_user,Base User,model_fedex_statut_colis,base.group_user,1,1,1,1
+fedex_colis_user,Base User,model_fedex_colis,base.group_user,1,1,1,1
+fedex_modesortie_user,Base User,model_fedex_modesortie,base.group_user,1,1,1,1
+fedex_statut_transit_user,Base User,model_fedex_statut_transit,base.group_user,1,1,1,1
+fedex_transporteur_user,Base User,model_fedex_transporteur,base.group_user,1,1,1,1
+fedex_regime_user,Base User,model_fedex_regime,base.group_user,1,1,1,1
+fedex_etat_soumission_user,Base User,model_fedex_etat_soumission,base.group_user,1,1,1,1
+fedex_type_soumission_user,Base User,model_fedex_type_soumission,base.group_user,1,1,1,1
+fedex_manifeste_user,Base User,model_fedex_manifeste,base.group_user,1,1,1,1
+fedex_fedex_eclatement_user,Base User,model_fedex_eclatement,base.group_user,1,1,1,1
+fedex_fedex_articles_user,Base User,model_fedex_articles,base.group_user,1,1,1,1
+fedex_fedex_retourclient_user,Base User,model_fedex_retourclient,base.group_user,1,1,1,1
+fedex_fedex_sortie_user,Base User,model_fedex_sortie,base.group_user,1,1,1,1
