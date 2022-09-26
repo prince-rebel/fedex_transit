@@ -30,25 +30,34 @@
           
           <field name="Lta_id" />
           <field name="Date_Eclatement" />
+       
               <!-- <field name="test" options="{'no_create':True,'no_create_edit':True}"/> -->
            </group> 
+           <group >
+            <field name="Poids_manifest" 
+            readonly="1"
+            />
+           </group>
         </group>
               <notebook>
         <page name="Eclatement" string="Eclatement">
-        <field name="articles_ids" context="{'Lta_id':15}">
+        <field name="articles_ids" >
             <tree  editable="bottom">
               <field name="Lta_id"               
               invisible="1"
               />
-              <field name="NumLignle"/>
-              <field name="Awb"/>
+              <field name="NumLigne"/>
+              <field name="NumColis"/>
               <field name="Destinateur"/>
-              <field name="name"/>
-              <field name="Nbr"/>
+              <field name="Description"/>
+              <field name="NbrColis"/>
               <field name="Poids"/>
             </tree>
         </field>
-         
+        </page>
+        <page name="Article" string="Article">
+        <!-- <field name="manifest_article"/> -->
+          
         </page>
       </notebook>
       </sheet>

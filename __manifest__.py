@@ -38,6 +38,10 @@
         'views/eclatement.xml',
         'views/articles.xml',
         'views/retourClient.xml',
+        'views/demande_sortie.xml',
+        'views/Demande_en_attente.xml',
+        'views/demande_valider.xml',
+        'views/envoieAvis.xml',
         'data/mail_template.xml'
     ],
     # only loaded in demonstration mode

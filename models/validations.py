@@ -4,21 +4,29 @@ import string
 from odoo import models, fields, api
 from datetime import datetime
 
-
-class fedex_eclatement(models.Model):
-    _name = 'fedex.eclatement'
+class fedex_sortie_colie(models.Model):
+    _inherit="fedex.colis"
+    _name="fedex.sortie"
     _inherit =['mail.thread','mail.activity.mixin']
-    _description = 'Faire des éclatements'
+    _description = 'Demande  de sortie'
+
+    name_test = fields.Char(string='teste')
 
 
-    Lta_id  = fields.Many2one(string="Numero LTA",comodel_name='fedex.manifeste',required=True)
-    articles_ids  = fields.One2many(related='Lta_id.Colis_ids',readonly=False,
-    ondelete='cascade'
-    )
-    Date_Eclatement= fields.Date(string="Date ", default=datetime.today())
-    nbrTotal = fields.Integer(string="Nombre total d'article",compute='_totalArticle',required=True)
-    Poids_manifest = fields.Float(string='poids du manifeste',store=True,
-        compute='_onchangeLta' )
+# class fedex_validations(models.Model):
+#     _name = 'fedex.validations'
+#     _inherit =['mail.thread','mail.activity.mixin']
+#     _description = 'Demande de validations de sortie'
+
+
+#     Lta_id  = fields.Many2one(string="Numero LTA",comodel_name='fedex.manifeste',required=True)
+#     articles_ids  = fields.One2many(related='Lta_id.Colis_ids',readonly=False,
+#     ondelete='cascade'
+#     )
+#     Date_Eclatement= fields.Date(string="Date ", default=datetime.today())
+#     nbrTotal = fields.Integer(string="Nombre total d'article",compute='_totalArticle',required=True)
+#     Poids_manifest = fields.Float(string='poids du manifeste',store=True,
+#         compute='_onchangeLta' )
     
     
     # manifest_article =fields.Char(compute='_custom_method')

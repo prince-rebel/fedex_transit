@@ -7,10 +7,34 @@
     <field name="arch" type="xml">
       <tree> 
           <!-- <field name="add_date"/> -->
-          <field name="Lta_id"/>
+          <field name="NumColis"/>
           <field name="Poids"/>
+          <field name="state_colis"/>
           <!-- <field name="Transporteur"/> -->
       </tree>
+    </field>
+  </record>
+
+  <!-- vue graph -->
+  <record id="colis_graph" model="ir.ui.view">
+    <field name="name">fedex.colis.graph</field>
+    <field name="model">fedex.colis</field>
+    <field name="arch" type="xml">
+      <graph string="colis graph">
+        <field name="state_colis"/>
+        <field name="NumColis" type="measure"/>
+      </graph>
+    </field>
+  </record>
+  <!-- vue pivot -->
+  <record id="colis_pivot" model="ir.ui.view">
+    <field name="name">fedex.colis.pivot</field>
+    <field name="model">fedex.colis</field>
+    <field name="arch" type="xml">
+      <pivot string="colis pivot ">
+        <field name="state_colis" />
+        <field name="Date_de_sortie" />
+      </pivot>
     </field>
   </record>
   <!-- Vue formulaire -->
@@ -19,17 +43,13 @@
     <field name="model">fedex.colis</field>
     <field name="arch" type="xml">
       <form> 
-      <!-- <header>
-        <button name="next_level" type="object" string="Etape suivante" class="oe_highlight" />
-        <field name="status" widget="statusbar" nolabel="1"></field>
-      </header> -->
+     
       <sheet>
         <field name="ImageColis" widget="image" class="oe_avatar" />
 
         <group >
            <group>
               <!-- <separator string="Informations d'Identification" colspan="1"/> -->
-              <field name="Lta_id" />
               <field name="NumColis" />
               <field name="Poids" />
               <field name="Destinateur" />
@@ -41,10 +61,16 @@
            </group> 
            <group >
               <field name="ValeurColis" />
-              <field name="StatusColis" />
-              <field name="ModeSortie_id" />
+              <field name="state_colis" 
+              readonly="1"
+              />
+              <field name="ModeSortie_id" 
+              readonly="1"
+              />
               <field name="Ref" />
-              <field name="Date_de_sortie" />
+              <field name="Date_de_sortie" 
+              readonly="1"
+              />
            </group>
             <separator string="Description" colspan="1"/>
            <field name="Description" />
@@ -63,7 +89,15 @@
   <record id="action_transit_colis" model="ir.actions.act_window">
     <field name="name">Gestion des Colis</field>
     <field name="res_model">fedex.colis</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">tree,form,graph,pivot</field>
+    <field name="view_ids" eval="[ (5, 0, 0), (0, 0, {
+                    'view_mode': 'tree',
+                    'view_id': ref('fedex__transit.list_vue_transit_colis'),
+                    }),
+                    (0, 0, {
+                    'view_mode': 'form',
+                    'view_id': ref('fedex__transit.transit_colis_form_view'),
+                    }),]"/>
   </record>
 
   <!-- <record id="action_validation" model="ir.actions.act_window">
@@ -77,21 +111,19 @@
     <field name="res_model">fedex.colis</field>
     <field name="view_mode">tree,form</field>
   </record>
-  <record id="action_sortie" model="ir.actions.act_window">
-    <field name="name">Sortie Colis</field>
-    <field name="res_model">fedex.colis</field>
-    <field name="view_mode">tree,form</field>
-  </record>
+
 
   <menuitem id="transit_root_menu"  name="Fedex Transit"/>
   <menuitem id="transit_sous_menu"  parent="transit_root_menu" name="Colis"/>
   <menuitem id="operations"  parent="transit_root_menu" name="Opérations"/>
+  <menuitem id="Magasin"  parent="transit_root_menu" name="Magasin"/>
+  <menuitem id="Gestionnaire"  parent="transit_root_menu" name="Gestionnaire"/>
   <menuitem id="validation"  parent="transit_root_menu" name="Validation"/>
   <menuitem id="fedex_parametre"  parent="transit_root_menu" name="Parametre"/>
 
   <!-- ajout des sous menus pour chaque categorie -->
   <menuitem id="ajout_colis_menu" action="action_transit_colis" parent="transit_sous_menu" name="Ajouter un colis"/>
-  <menuitem id="sortie_colis_menu" action="action_sortie"  parent="operations" name="Sortie colis "/>
+  <!-- <menuitem id="sortie_colis_menu" action="action_sortie"  parent="operations" name="Sortie colis "/> -->
   <!-- <menuitem id="mes_validations_menu" action="action_validation"  parent="validation" name="Mes demandes"/> -->
   <!-- <menuitem id="ajout_transitaires_menu" action="action_parametre"  parent="fedex_parametre" name="Transitaires"/> -->
 

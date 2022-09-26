@@ -23,17 +23,13 @@
     <field name="arch" type="xml">
       <form> 
       <header>
-        <button name="button_get_in_eclatement" type="object" string="Envoyer à Eclatement" class="oe_highlight" 
-        attrs="{'invisible':[('state','==','in_progress')]}"/>
+        <!-- <button name="button_get_in_eclatement" type="object" string="Envoyer à Eclatement" class="oe_highlight" 
+        attrs="{'invisible':[('state','==','in_progress')]}"/> -->
         <!-- <button name="send_mail" type="object" string="Envoyer un mail" class="oe_highlight" /> -->
-        <field name="state" widget="statusbar" nolabel="1"></field>
+        <!-- <field name="state" widget="statusbar" nolabel="1"></field> -->
       </header>
       <sheet>
-        <div class="oe_button_box" name="button_box">
-            <button string="send_email" icon="fa-envelope" class="oe_stat_button" name="send_mail" type="object"/>
-
-
-        </div>
+        
 
         <group >
            <group>
@@ -50,18 +46,27 @@
         </group>
            <notebook>
             <page name="Colis" string="Colis">
-            <field name="Colis_ids">
+            <field name="Colis_ids" context="{'default_Lta_id':name,'store':True}">
             <tree>
+                <!-- <field name="Lta_id" 
+                readonly="1"
+                 /> -->
                 <field name="NumColis"/>
                 <field name="Poids"/>
                 <field name="Destinateur"/>
                 <field name="NbrColis"/>
                 <field name="Description"/>
                 <field name="ValeurColis"/>
-                <field name="StatusColis"/>
-                <field name="ModeSortie_id"/>
+                <field name="state_colis" 
+                readonly="1"
+                />
+                <field name="ModeSortie_id" 
+                readonly="1"
+                />
                 <field name="Ref"/>
-                <field name="Date_de_sortie"/>
+                <field name="Date_de_sortie" 
+                readonly="1"
+                />
             </tree>
             </field>
                 
